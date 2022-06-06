@@ -7,11 +7,23 @@ function Boton(props) {
     return isNaN(valor) && (valor !== '.') && (valor !== '=');
   };
 
+  let clase = 'boton-contenedor';
+
+  if(esOperador(props.children)){
+    clase = clase + ' operador'; 
+  }
+
   return (
-    <div className={`boton-contenedor ${esOperador(props.children)?'operador': null}`.trimEnd()}>
+    <div className={clase}
+      onClick={()=>props.manejarClic(props.children)}>
       {props.children}
     </div>
   );
+
+
 }
 
 export default Boton;
+
+
+
